@@ -14,11 +14,11 @@ For the back story see: http://meet-meteor-london.meteor.com/
 Topics that we'll cover
 -----------------------
 
-- What's a Meteor made of?: How Meteor fits together, and where it fits in the firmament.
-- Database Everywhere: Client-side Mongo, data on the wire, pub/sub, access control and latency compensation.
-- Reactivity: Autogmagic DOM updates, Handlebars++, Deps dependency tracking and custom CRUD event handlers.
-- Users & Auth, Sessions & Smart Packages
-- Getting up: Deploying to meteor.com & custom hosting.
+- **What's a Meteor made of?**: How Meteor fits together, and where it fits in the firmament.
+- **Database Everywhere**: Client-side Mongo, data on the wire, pub/sub, access control and latency compensation.
+- **Reactivity**: Autogmagic DOM updates, Handlebars++, Deps dependency tracking and custom CRUD event handlers.
+- **Users & Auth, Sessions & Smart Packages**
+- **Getting up**: Deploying to meteor.com & custom hosting.
 
 
 What's a Meteor made of?
