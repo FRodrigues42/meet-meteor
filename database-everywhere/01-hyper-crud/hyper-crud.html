@@ -1,0 +1,16 @@
+<head>
+  <title>Database Everywhere - Meet Meteor</title>
+</head>
+
+<body>
+  <h1>Database Everywhere</h1>
+  {{> listTemplate}}
+</body>
+
+<template name="listTemplate">
+  <ul>
+    {{#each allTheThings}}
+    <li title="{{_id}}">{{name}}</li>
+    {{/each}}
+  </ul>
+</template>
