@@ -20,3 +20,8 @@ Now you've got a simple Meteor app running. If you can see:
 	=> Meteor server running on: http://localhost:3000/
 
 ...then all is well. Now let's chat.
+
+Where next?
+---
+
+Create a button that, when clicked will retrieve the prior 25 messages in the conversation.
