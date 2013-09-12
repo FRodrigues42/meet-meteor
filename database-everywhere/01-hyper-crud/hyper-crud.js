@@ -6,15 +6,7 @@
       \/      \/      \/                  \/      \/             \/                 
 
 Database Everywhere! - How to data.
-
-in your browser dev console try:
-    dogs.insert({name:'rover', breed:'pointer'})
-    dogs.insert({name:'fido', breed:'poodle'})
-    dogs.insert({name:'dug', breed:'golden retriever'})
-
-    dogs.find().fetch()
-    dogs.find({breed: /^po/}).fetch()
-    dogs.findOne({name:'rover'})
+See README.md for walkthrough...
 */
 
 // Create a collection on both client and server
