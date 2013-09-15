@@ -1,0 +1,46 @@
+<head>
+  <title>02-subpub-banter</title>
+</head>
+
+<body>
+  {{> msgs}}
+  {{> input}}
+</body>
+
+<template name="msgs">
+  <ul id="msgs">
+    {{#each msgs}}
+      {{> msg}}
+    {{/each}}
+  </ul>
+</template>
+
+<template name="msg">
+  <li>
+    <div class="meta">
+        <time datetime="{{created}}">{{fromnow created}}</time>
+    </div>
+    <div>
+      <div class="msg-box">
+        <pre>{{msg}}</pre>
+      </div>
+      <img class="gravatar" src="{{gravatar handle}}" title="{{trim handle}}">
+    </div>
+  </li>
+</template>
+
+<template name="input">
+  <div id="input">
+    <form class="input-append">
+       <input id="msg" class="span4" type="text" placeholder="Message"/>
+       <button id="send" class="btn btn-success" type="button">Send</button>
+    </form>
+    <div class="form-inline">
+      <div class="input-prepend">
+        <span class="add-on">@</span>
+        <input id="handle" type="text" placeholder="Email"/>
+      </div>
+    </div>
+    <a id="gh" href="https://github.com/tableflip/meet-meteor/tree/master/database-everywhere/02-subpub-banter" title="Fork me on GitHub"><img src="img/GitHub-Mark-32px.png" alt="GitHub logo"/></a>
+  </div>
+</template>

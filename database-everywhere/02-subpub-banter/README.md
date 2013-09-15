@@ -13,7 +13,7 @@ Database Everywhere! - sub/pub banter.
 Stage 1
 ---
 
-In your terminal, run `meteor` in this directory:
+In your terminal, run `meteor` in the `stage-1` directory:
 
 ```sh
 meteor
@@ -45,25 +45,57 @@ meteor remove insecure
 meteor remove autopublish
 ```
 
+Create a file `server/main.js` and add some code to publish a record set called 'messages' sorted by creation date (DESC), allowing the client to specify the `limit` when they subscribe.
 
-
-Now let's chat.
-
-The interesting files are:
-
-```
-shared.js
-server/main.js
-client/js/main.js
+```javascript
+Meteor.publish("messages", function (opts) {
+  return Messages.find({}, {limit: opts.limit, sort: [["created", "desc"]]})
+})
 ```
 
-`shared.js` is code run on _both_ the client _and_ the server. It defines a shared collection called 'messages'.
+In `shared.js` add some code that'll allow clients to _insert_ into the collection:
 
-`server/main.js` publishes a record set called 'messages' that the client can subscribe to. The client can pass parameters when it subscribes, in this case the server is expecting `channel` and `limit` parameters.
+```javascript
+Messages.allow({
+  insert: function (userId, msg) {
+    msg.created = Date.now() // Add timestamp server side so client can't effect message ordering
+    return true
+  }
+})
+```
 
-`client/js/main.js` subscribes to the feed, renders and re-renders the message list automatically whenever the data in it's messages collection changes. It can also insert messages into the collection that are automatically propogated to the server and any other connected clients.
+In `client/js/main.js` subscribe to the `messages` feed:
 
-What now?
+```javascript
+Meteor.subscribe("messages", {limit: LIMIT})
+```
+
+Sub out the functionality to post a message by attaching events to some DOM elements:
+
+```javascript
+// Send a message by inserting into the Messages collection
+function sendMsg () {
+}
+
+// Events for sending messages
+Template.input.events({
+  "click #send": sendMsg,
+  "keypress #msg": function (event) {
+    if (event.which == 13) {
+      event.preventDefault()
+      sendMsg()
+    }
+  }
+})
+```
+
+Stage 3
 ---
+
+Implement the `sendMsg` function.
+
+Use `window.location.pathname` to create chat rooms in your app. Your published record set will need to accept a chat room parameter and filter the records accordingly. When sending messages you'll have to save the chat room name.
+
+### Bonus points
 
 Create a button that when clicked will retrieve the prior 25 messages in the conversation.

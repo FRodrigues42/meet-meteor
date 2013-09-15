@@ -5,17 +5,6 @@ Meteor.subscribe("messages", {channel: window.location.pathname, limit: LIMIT})
 
 // Send a message by inserting into the Messages collection
 function sendMsg () {
-  var msg = $("#msg")
-  
-  if (!msg.val()) return;
-  
-  Messages.insert({
-      channel: window.location.pathname
-    , handle: $("#handle").val()
-    , msg: msg.val()
-  })
-  
-  msg.val("")
 }
 
 // Events for sending messages and saving handle to localStorage
