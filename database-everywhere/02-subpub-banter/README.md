@@ -70,7 +70,7 @@ In `client/js/main.js` subscribe to the `messages` feed:
 Meteor.subscribe("messages", {limit: LIMIT})
 ```
 
-Sub out the functionality to post a message by attaching events to some DOM elements:
+Stub out the functionality to post a message by attaching events to some DOM elements:
 
 ```javascript
 // Send a message by inserting into the Messages collection
