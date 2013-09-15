@@ -10,6 +10,9 @@
 Database Everywhere! - How to data.
 ===================================
 
+Stage 1
+---
+
 In your terminal, run `meteor` in this directory:
 	
 	meteor
@@ -19,7 +22,12 @@ Now you've got a simple Meteor app running. If you can see:
 
 	=> Meteor server running on: http://localhost:3000/
 
-...then all is well. Now let's CRUD. In your browsers dev console try:
+...then all is well.
+
+Stage 2
+---
+
+Now let's CRUD. In your browsers dev console try:
 
 ```javascript
 dogs.insert({name:'rover', breed:'pointer'})
@@ -27,11 +35,20 @@ dogs.insert({name:'fido', breed:'poodle'})
 dogs.insert({name:'dug', breed:'golden retriever'})
 ```
 
-As you insert objects to the collection, you should see them appear on the page. 
-Now try some queries to retrieve them:
+As you insert objects to the collection, you should see them appear on the page.
 
-```javascript
-dogs.find().fetch()
-dogs.find({breed: /^po/}).fetch()
-dogs.findOne({name:'rover'})
-```
+Stage 3
+---
+
+Now, using the [meteor collection docs](http://docs.meteor.com/#collections) as a helping hand, try some queries in your browser console to retrieve them:
+
+* Fetch (pun intended) all dogs from the database
+* Fetch all dogs sorted by name
+* Fetch all dogs whose names begin "po"
+* Fetch a single dog by name
+
+Delete all dogs whose name is "rover".
+
+Insert some new dogs with profile pictures into the database by adding a field `url` to the object you insert.
+
+Add a profile picture to an existing dog.

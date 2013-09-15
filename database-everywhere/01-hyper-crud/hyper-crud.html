@@ -10,7 +10,10 @@
 <template name="listTemplate">
   <ul>
     {{#each allTheThings}}
-    <li title="{{_id}}">{{name}}</li>
+    <li title="{{_id}}">
+      {{#if url}}<img src="{{url}}" alt="Profile picture for {{name}}"/>{{/if}}
+      {{name}}
+    </li>
     {{/each}}
   </ul>
 </template>
