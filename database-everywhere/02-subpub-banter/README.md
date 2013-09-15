@@ -10,6 +10,9 @@
 Database Everywhere! - sub/pub banter.
 ======================================
 
+Stage 1
+---
+
 In your terminal, run `meteor` in this directory:
 
 ```sh
@@ -20,7 +23,31 @@ Now you've got a simple Meteor app running. If you can see:
 
 	=> Meteor server running on: http://localhost:3000/
 
-...then all is well. Now let's chat.
+...then all is well.
+
+As per the first demo, you should be able to insert messages into the `Messages` collection using your browser console:
+
+```javascript
+Messages.insert({
+  handle: "meteor@example.org",
+  msg: "Oh HAI!",
+  created: Date.now()
+})
+```
+
+Stage 2
+---
+
+Second thing to do is remove the `insecure` and `autopublish` packages from your meteor app. These are two core packages included by default in newly created meteor apps.
+
+```sh
+meteor remove insecure
+meteor remove autopublish
+```
+
+
+
+Now let's chat.
 
 The interesting files are:
 
