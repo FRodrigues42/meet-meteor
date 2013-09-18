@@ -43,6 +43,94 @@
 						<small><a href="http://github.com/alanshaw">Alan Shaw</a> / <a href="http://twitter.com/_alanshaw">@_alanshaw</a></small>
 					</p>
 				</section>
+        
+        <section>
+          <h1>How?</h1>
+        </section>
+        
+        <section>
+          <p>In <strong>Meteor</strong>, the <em>client</em> and <em>server</em> share the <strong>same</strong> database API</p>
+        </section>
+        
+        <section>
+          <h1>Server</h1>
+          <p>talks directly to a <a href="http://www.mongodb.org/">MongoDB</a></p>
+        </section>
+        
+        <section>
+          <h1>Client</h1>
+          <p>doesn't.</p>
+          <p>...but you can think of it as though it does</p>
+        </section>
+        
+        <section>
+          <h1>Client</h1>
+          <p>Actually talks to Meteor's <a href="https://github.com/meteor/meteor/tree/devel/packages/minimongo">minimongo</a>, which is an in-memory client side Mongo</p>
+        </section>
+        
+        <section>
+          <p>and <strong>Meteor</strong> keeps them in sync</p>
+        </section>
+        
+        <section>
+          <h2>ERHMAHGERD!</h2>
+          <img src="img/erhmahgerd.jpg">
+        </section>
+        
+        
+        <section>
+          <h2>Meteor doesn't sync the whole database to every client!</h2>
+        </section>
+        
+        <section>
+          <h1>Pub/Sub</h1>
+        </section>
+        
+        <section>
+          <h1>Server</h1>
+          <p><em>publishes</em> sets of JSON documents</p>
+        </section>
+        
+        <section>
+          <h1>Client</h1>
+          <p><em>subscribes</em> to document sets</p>
+        </section>
+        
+        
+        <section>
+          <h2>How does it keep sync?</h2>
+        </section>
+        
+        <section>
+          <h1>Data on the Wire</h1>
+          <p>Let the client decide how to render it!</p>
+        </section>
+        
+        <section>
+          <p><strong>Meteor</strong> uses <a href="http://www.meteor.com/blog/2012/03/21/introducing-ddp">DDP</a>; the <strong>Distrubuted Data Protocol</strong> to patch client's database when documents change</p>
+        </section>
+        
+        <section>
+          <h2>to ALL connected clients</h2>
+          <img src="img/all-the-things.png">
+        </section>
+        
+        <section>
+          <p>Local document changes <strong>assumed</strong> to succeed and UI is updated immediately</p>
+        </section>
+        
+        <section>
+          <p>Behind the scenes, <strong>Meteor</strong> sends request to server and server allows/denies/errors/succeeds</p>
+        </section>
+        
+        <section>
+          <p>This is called</p>
+          <h2>Latency Compensation</h2>
+        </section>
+        
+        
+        
+        
 
 				<section>
 					<h2>Heads Up</h2>
