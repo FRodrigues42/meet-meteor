@@ -1,0 +1,38 @@
+<head>
+  <title>blackboard</title>
+</head>
+
+<body>
+  {{> hello}}
+</body>
+
+<!-- TESTING SOME THINGS OUT. -->
+
+<template name="hello">	
+  <h1>Hello World! {{foo}}</h1>
+  {{greeting}}
+  <input type="button" value="Click" />
+  <ul>
+  {{#each bar}}
+  	<li>{{name}}</li>
+  {{/each}}
+  </ul>
+  <hr />
+  <ul>
+  {{#each tao}}
+  	<li>{{name}}</li>
+  {{/each}}
+  </ul>
+  <hr />
+  <ul>
+  {{#each zok}}
+  	<li>{{name}}</li>
+  {{/each}}
+  </ul>
+  <hr />  
+  <ul>
+  {{#each wee}}
+  	<li>{{name}}</li>
+  {{/each}}
+  </ul>    
+</template>
