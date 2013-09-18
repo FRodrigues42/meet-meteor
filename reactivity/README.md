@@ -85,11 +85,33 @@ Template.dogNames.dogs = function () {
 
 Meteor will automatically re-render the dogNames template whenver the Dogs collection is changed.
 
-WAT! THIS IS MAGIC.
+WAT! THIS IS MAGIC. 
 
-Yes, the surprising part is 
-
+(**Spoiler alert** There is no magic. All will be revealed shortly)
 
 Deps - make anything reactive!
 ------------------------------
+  
+So HTML templates are great, but what if you need to call a js function to put a pin on a map or a line on a canvas?
 
+The templates just magically re-rendered themselves when the collection was updated, how do I get some of that for my other code?
+
+Ladies and Gentlemen, behold:
+
+```js
+var Lines = new Meteor.Collection('lines')
+
+Deps.autorun(function () {
+  Lines.find().fetch().forEach(function (line) {
+    // mahCanvas.drawAThing(line)
+  })
+})
+```
+
+Deps takes your function, jQuery widget, awesome d3 graph, or anything that you'd rather write in JavaScript than HTML, and makes it reactive.
+
+By wrapping your drawing code in `Deps.autorun()` you tell Meteor to record the data sources that your code uses, and re-run your function when they change.
+
+Meteor assumes that you probably want your templates to re-render as the data changes so the functions you add to your Template objects are made reactive for you.
+
+**DON'T FORGET! The function you pass to `Deps.autorun()` will be called every time the data it uses changes.**
