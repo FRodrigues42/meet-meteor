@@ -1,0 +1,40 @@
+<head>
+  <title>Moustachery - Meet Meteor</title>
+</head>
+
+<body>
+	<header>
+		{{> header }}
+	<header>
+	{{> search }}
+	
+	{{> mustaches }}
+	<img src="http://thats-normal.com/wp-content/uploads/2013/07/puppy-2-mustache.jpg">
+	
+</body>
+
+<template name="header">
+  <h1>Moustachery:
+	<span class="strap">{{strapline}}</span>
+  </h1>
+</template>
+
+<template name="mustaches">
+  {{#if isEmpty}}
+  	<h2>Search for some 'stach</h2>
+  {{/if}}
+  {{#each allOfThem}}
+  	<div class="stache">
+  		<img src="{{img}}" />
+  		<h2>{{name}}</h2>
+  	</div>  		
+  {{/each}}
+</template>
+
+<template name="search">
+<div class="search">
+	<form>
+		{<input id ="searchInput" type="search" placeholder="search me" />}
+	</form>
+</div>
+</template>

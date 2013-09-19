@@ -1,0 +1,58 @@
+body{
+	font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+	font-family: Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif;
+	padding:0;
+	margin:0;
+	background: #EEE;
+	text-align: center;
+}
+h1{
+	background: #222;
+	color: #EEE;
+	margin:0;
+	font-size: 1.4em;
+	line-height: 1.8em;
+	padding: 0 10px;
+}
+h1 .strap{
+	font-style: italic;
+	font-size: smaller;
+}
+h2{
+	margin: 6px;
+	font-size: 2.4em;
+	text-transform: capitalize;
+}
+.search{
+	text-align: center;
+	font-size:4em;
+	margin-bottom: 20px;
+}
+#searchInput{
+	text-align: center;
+	font-size: 0.8em;
+	padding: 0.1em 0.6em;
+	border: 0 none;
+	border-bottom: 2px dotted #333;
+	border-radius: 0;
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+	background: inherit;
+}
+#searchInput:focus{
+	outline: none
+}
+.stache {
+	display: inline-block;
+	width:30%;	
+	vertical-align: top;
+	background: #FFF;
+	margin: 10px .2%;
+	padding:8px 8px 4px;
+	color: #444;
+}
+.stache img {
+	width:100%;
+	background: #333;
+	border:solid 1px #EEE;
+	min-height: 50%
+}
