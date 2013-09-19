@@ -14,6 +14,12 @@ if (Meteor.isClient) {
     return straps[getRandomInt(0, straps.length - 1)]
   };
 
+  Template.header.events({
+    click: function (evt) {
+      $('header span').html(Template.header.strapline());
+    },
+  });  
+
   Template.mustaches.isEmpty = function () {
     return Mustaches.find().count() < 1;
   }  
