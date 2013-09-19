@@ -75,6 +75,7 @@ Stub out the functionality to post a message by attaching events to some DOM ele
 ```javascript
 // Send a message by inserting into the Messages collection
 function sendMsg () {
+  console.log("TODO: Send message")
 }
 
 // Events for sending messages
