@@ -16,7 +16,7 @@ then show & tell
 
 ---
 
-* 14:00 - 15:00   Chris "users, accounts, sessions"
+* 14:00 - 15:00   Chris "users, accounts, sessions" slides & live code & group work
 * 15:00 - 15:15   Coffee break
 * 15:15 - 17:00   Free hack / show & tell
 * 17:00 - 00:00   Ale^
