@@ -10,7 +10,7 @@ See ../README.md for walkthrough
 */
 
 // Collection is shared between client and server
-var Mustaches = new Meteor.Collection('mustaches');
+Mustaches = new Meteor.Collection('mustaches');
 
 if (Meteor.isClient) {
   
@@ -21,11 +21,7 @@ if (Meteor.isClient) {
     "Markup grooming maketh man",
     "Temple of plate brushes"
   ]
-
-  function randomStrapLine () {
-    return straps[getRandomInt(0, straps.length - 1)]
-  }
-
+  
   // Store a random strapline in the reactive Session object on the client.
   Session.set('strapline', randomStrapLine());
 
@@ -60,28 +56,36 @@ if (Meteor.isClient) {
 
       var stachId = Mustaches.insert({createdDate: Date.now(), name: term});
 
-      findImg(term, function(url){
-        // Mustaches.update(stachId, {img: url});
+      findImg(term, function (url) {
         Mustaches.update(stachId, {$set: {img: url}});
       });
-  
     },
-  });
-
-  function findImg(search, cb) {
-    // add `+animated+filetype:gif` to the search for maximum funtimes
-    $.getJSON("http://ajax.googleapis.com/ajax/services/search/images?v=1.0&q="+search+"+moustache&callback=?",
-    function(data){
-      $.each(data.responseData.results, function(i,item){
-        cb(item.unescapedUrl);
-        if ( i == 0 ) return false;
-      });
-    });
-  }
-
-  // TRY ME: Replace this with http://docs.meteor.com/#random
-  function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  }  
+  });  
 }
 
+// ---- Helper function, ignore for now ---------------------------------------
+
+// TRY ME LATER: Replace this with http://docs.meteor.com/#random
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function randomStrapLine () {
+  return straps[getRandomInt(0, straps.length - 1)]
+} 
+
+// Search google for an image url...
+function findImg(search, cb) {
+  
+  // add `+animated+filetype:gif` to the search for maximum funtimes
+  
+  $.getJSON("http://ajax.googleapis.com/ajax/services/search/images?v=1.0&q="+search+"+moustache&callback=?",
+  function(data){
+    // TRY ME LATER: What about storing the whole doc in the the Mustaches collection?
+    // TRY ME LATER: Use the additional results as a backup in case the first image fails to load...
+    $.each(data.responseData.results, function(i,item){
+      cb(item.unescapedUrl);
+      if ( i == 0 ) return false;
+    });
+  });
+}

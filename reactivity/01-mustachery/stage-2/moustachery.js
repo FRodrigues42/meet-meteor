@@ -21,15 +21,38 @@ if (Meteor.isClient) {
     "Markup grooming maketh man",
     "Temple of plate brushes"
   ]
-
+  
   // Store a random strapline in the reactive Session object on the client.
   Session.set('strapline', randomStrapLine());
 
-  // TRY ME: Create a `strapline` helper function for the `header` template
+  // Add a helper to retrieve a strapline
+  Template.header.strapline = function () {
+    // Meteor notices this templates is dependant on the Session's strapline value, and will re-render when it chages.
+    return Session.get('strapline');
+  };
 
-  // TRY ME: Add a click handler to the header template
+  // on click: pick another random strapline and set it on the Session
+  Template.header.events({
+    click: function (evt) {
+      Session.set('strapline', randomStrapLine());
+    },
+  });
 
-  // TRY ME: Add a submit handler to the search template
+  Template.search.events({
+    submit: function (evt) {
+      evt.preventDefault();
+    
+      var term = $('#searchInput').val()
+    
+      console.log($('#searchInput').val())
+
+      var stachId = Mustaches.insert({createdDate: Date.now(), name: term});
+
+      findImg(term, function (url) {
+        Mustaches.update(stachId, {$set: {img: url}});
+      });
+    },
+  });
 
   // TRY ME: Add an `allOfThem` helper to the `mustaches` template that returns all the objects in the `Mustaches` Collection
 
