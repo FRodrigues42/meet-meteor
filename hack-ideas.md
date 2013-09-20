@@ -8,4 +8,4 @@ Intermediate
 
 Advanced
 ===
-1. Use Github API to create a dashboard showing reactive realtime graph (d3 perhaps?) of time vs commits from meteor-hack-day with commit messages underneath.
+1. Use Github API to create a dashboard showing reactive realtime graph (d3 perhaps?) of time vs commits from the [meteor github repository](git@github.com:meteor/meteor.git) with commit messages underneath.
