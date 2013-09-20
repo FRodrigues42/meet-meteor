@@ -6,29 +6,41 @@
       \/      \/      \/                  \/      \/             \/                 
 
 Reactivity! - How to template.
-See README.md for walkthrough...
+See ../README.md for walkthrough
 */
 
+// Collection is shared between client and server
 var Mustaches = new Meteor.Collection('mustaches');
 
 if (Meteor.isClient) {
   
+  // Non-reactive, plain old array.
   var straps = [
     "A hotchpotch of handlebars",
     "Curly braces for a lovely faces",
     "Markup grooming maketh man",
-    "Temple of plate brushes",
-  ]  
+    "Temple of plate brushes"
+  ]
 
-  Template.header.strapline = function () {
+  function randomStrapLine () {
     return straps[getRandomInt(0, straps.length - 1)]
+  }
+
+  // Store a random strapline in the reactive Session object on the client.
+  Session.set('strapline', randomStrapLine());
+
+  // Add a helper to retrieve a strapline
+  Template.header.strapline = function () {
+    // Meteor notices this templates is dependant on the Session's strapline value, and will re-render when it chages.
+    return Session.get('strapline');
   };
 
+  // on click: pick another random strapline and set it on the Session
   Template.header.events({
     click: function (evt) {
-      $('header span').html(Template.header.strapline());
+      Session.set('strapline', randomStrapLine());
     },
-  });  
+  });
 
   Template.mustaches.isEmpty = function () {
     return Mustaches.find().count() < 1;
@@ -48,7 +60,7 @@ if (Meteor.isClient) {
 
       var stachId = Mustaches.insert({createdDate: Date.now(), name: term});
 
-      findGif(term, function(url){
+      findImg(term, function(url){
         // Mustaches.update(stachId, {img: url});
         Mustaches.update(stachId, {$set: {img: url}});
       });
@@ -56,8 +68,9 @@ if (Meteor.isClient) {
     },
   });
 
-  function findGif(search, cb) {
-    $.getJSON("http://ajax.googleapis.com/ajax/services/search/images?v=1.0&q="+search+"+moustache+animated+filetype:gif&callback=?",
+  function findImg(search, cb) {
+    // add `+animated+filetype:gif` to the search for maximum funtimes
+    $.getJSON("http://ajax.googleapis.com/ajax/services/search/images?v=1.0&q="+search+"+moustache&callback=?",
     function(data){
       $.each(data.responseData.results, function(i,item){
         cb(item.unescapedUrl);
