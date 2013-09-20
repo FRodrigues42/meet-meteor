@@ -1,16 +1,18 @@
 <head>
   <title>Moustachery - Meet Meteor</title>
 </head>
-
 <body>
 	<header>
 		{{> header }}
 	<header>
+
 	{{> search }}
 	
 	{{> mustaches }}
-	<img src="http://thats-normal.com/wp-content/uploads/2013/07/puppy-2-mustache.jpg">
-	
+
+	<footer>
+		<img src="http://thats-normal.com/wp-content/uploads/2013/07/puppy-2-mustache.jpg">
+	</footer>
 </body>
 
 <template name="header">
@@ -32,9 +34,9 @@
 </template>
 
 <template name="search">
-<div class="search">
-	<form>
-		{<input id ="searchInput" type="search" placeholder="search me" />}
-	</form>
-</div>
+	<div class="search">
+		<form>
+			{<input id ="searchInput" type="search" placeholder="search me" />}
+		</form>
+	</div>
 </template>
