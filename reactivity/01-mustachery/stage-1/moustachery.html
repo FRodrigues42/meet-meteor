@@ -2,34 +2,41 @@
   <title>Moustachery - Meet Meteor</title>
 </head>
 <body>
-	<header>
-		<h1>Moustachery:<span class="strap">Curly braces for a lovely faces</span></h1>
-	<header>
+  <header>
+    <!-- TRY ME:
+          - Make this into a template called `header` and 
+          - Replace the `.strap` text with a template variable called `strapline` -->
+    <h1>Moustachery:<span class="strap">Curly braces for a lovely faces</span></h1>
+  <header>
 
-	<div class="search">
-		<form>
-			{<input id ="searchInput" type="search" placeholder="search me" />}
-		</form>
-	</div>
-	
-	<div class="stache">
-  		<img src="http://3.bp.blogspot.com/-0tJJfmEemDw/Uff6urZnZxI/AAAAAAAAOA4/ADpUuWLo62o/s1600/moustache.gif" />
-  		<h2>Wiggle</h2>
-  	</div>  		
+  <!-- TRY ME:
+        - Make this into a template called `search` -->
+  <div class="search">
+    <form>
+      {<input id ="searchInput" type="search" placeholder="search me" />}
+    </form>
+  </div>
 
-	<div class="stache">
-  		<img src="http://i31.tinypic.com/16kcfah.gif" />
-  		<h2>Huge</h2>
-  	</div> 
+  <!-- TRY ME:
+        - Make this into a template called `mustaches` 
+        - Use the #each helper with a tempate helper called `allOfThem` -->
+  <div class="stache">
+    <img src="http://3.bp.blogspot.com/-0tJJfmEemDw/Uff6urZnZxI/AAAAAAAAOA4/ADpUuWLo62o/s1600/moustache.gif" />
+    <h2>Wiggle</h2>
+  </div>
 
-	<div class="stache">
-  		<img src="http://awesomegifs.com/wp-content/uploads/ron-swanson-corn-mustache.gif" />
-  		<h2>Weird</h2>
-  	</div>   	  	
+  <div class="stache">
+    <img src="http://i31.tinypic.com/16kcfah.gif" />
+    <h2>Huge</h2>
+  </div>
 
+  <div class="stache">
+    <img src="http://awesomegifs.com/wp-content/uploads/ron-swanson-corn-mustache.gif" />
+    <h2>Weird</h2>
+  </div>
 
-	<footer>
-		<h2>Search for some 'stach</h2>
-		<img src="http://thats-normal.com/wp-content/uploads/2013/07/puppy-2-mustache.jpg">
-	</footer>
+  <footer>
+    <h2>Search for some 'stach</h2>
+    <img src="http://thats-normal.com/wp-content/uploads/2013/07/puppy-2-mustache.jpg" />
+  </footer>
 </body>

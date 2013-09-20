@@ -6,59 +6,46 @@
       \/      \/      \/                  \/      \/             \/                 
 
 Reactivity! - How to template.
-See README.md for walkthrough...
+See ../README.md for walkthrough
 */
 
+// Collection is shared between client and server
 var Mustaches = new Meteor.Collection('mustaches');
 
 if (Meteor.isClient) {
   
+  // Non-reactive, plain old array.
   var straps = [
     "A hotchpotch of handlebars",
     "Curly braces for a lovely faces",
     "Markup grooming maketh man",
-    "Temple of plate brushes",
-  ]  
+    "Temple of plate brushes"
+  ]
 
-  Template.header.strapline = function () {
+  function randomStrapLine () {
     return straps[getRandomInt(0, straps.length - 1)]
-  };
+  }
 
-  Template.header.events({
-    click: function (evt) {
-      $('header span').html(Template.header.strapline());
-    },
-  });  
+  // Store a random strapline in the reactive Session object on the client.
+  Session.set('strapline', randomStrapLine());
 
-  Template.mustaches.isEmpty = function () {
-    return Mustaches.find().count() < 1;
-  }  
+  // TRY ME: Create a `strapline` helper function for the `header` template
 
-  Template.mustaches.allOfThem = function () {
-    return Mustaches.find({}, {sort:[['createdDate','desc']]});
-  };
+  // TRY ME: Add a click handler to the header template
 
-  Template.search.events({
-    submit: function (evt) {
-      evt.preventDefault();
+  // TRY ME: Add an `allOfThem` helper to the `mustaches` template that returns all the objects in the `Mustaches` Collection
+
+  // TRY ME: Add an `isEmpty` helper to the `mustaches` template that returns true if the `Mustaches` count is 0
+
+  // Search google for an image url...
+  function findImg(search, cb) {
     
-      var term = $('#searchInput').val()
+    // add `+animated+filetype:gif` to the search for maximum funtimes
     
-      console.log($('#searchInput').val())
-
-      var stachId = Mustaches.insert({createdDate: Date.now(), name: term});
-
-      findGif(term, function(url){
-        // Mustaches.update(stachId, {img: url});
-        Mustaches.update(stachId, {$set: {img: url}});
-      });
-  
-    },
-  });
-
-  function findGif(search, cb) {
-    $.getJSON("http://ajax.googleapis.com/ajax/services/search/images?v=1.0&q="+search+"+moustache+animated+filetype:gif&callback=?",
+    $.getJSON("http://ajax.googleapis.com/ajax/services/search/images?v=1.0&q="+search+"+moustache&callback=?",
     function(data){
+      // TRY ME LATER: What about storing the whole doc in the the Mustaches collection?
+      // TRY ME LATER: Use the additional results as a backup in case the first image fails to load...
       $.each(data.responseData.results, function(i,item){
         cb(item.unescapedUrl);
         if ( i == 0 ) return false;
@@ -66,7 +53,7 @@ if (Meteor.isClient) {
     });
   }
 
-  // TRY ME: Replace this with http://docs.meteor.com/#random
+  // TRY ME LATER: Replace this with http://docs.meteor.com/#random
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }  
