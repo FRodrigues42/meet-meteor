@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Meet Meteor - Reactivity</title>
+
+    <meta name="description" content="Reactivity - Coping with change">
+    <meta name="author" content="@_alanshaw, @cwaring, @olizilla">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/meteor.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+<!--
+Notes
+=====
+
+- Making a UI dance to your data
+- Where do I put my HTML?
+  - Start simple, put it all in 1 .html file in the root of the project.
+- There is something weird about this file
+  - No html element, no doctype. You provide head, body and template elememtents. Meteor glues them together.   
+- Let's template  
+- Give it a name... and reference it.
+- Handlebars syntax. If you hate angle brackets, Jade is supported by, `meter add jade`
+- variables {{myVar}} re
+
+-->    
+
+<style>
+h1{
+  font-size: 3.2em !important
+}
+li {
+  margin: 1em 0 !important
+}
+.reveal pre code {
+  font-size: 1.8em;
+  line-height: 1em;
+}
+</style>
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h1>Reactivity</h1>
+          <h3>Making a UI dance to your data</h3>
+          <p>
+            <small><a href="http://github.com/olizilla">Oli Evans</a> / <a href="http://twitter.com/olizilla">@olizilla</a></small>
+          </p>
+        </section>
+
+        <section>
+          <h2>We're gonna talk about</h2>
+          <ul>
+            <li>Where the HTML lives</li>
+            <li>Whats a template look like?</li>
+            <li>Dude, where's my data?</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Hack along!</h1>
+          <H3>Let's get Meteor to do some work for us...</h3>
+        </section>        
+        
+        <section>
+          <h1>Meteor! Create!</h1>
+          <pre><code class="shell">
+ meteor create meet-meteor-templates
+          </code></pre> 
+        </section>
+
+        <section>
+          <h2>Where the HTML lives</h2>
+          <ul>
+            <li>
+              Start simple, put it all in 1 <code>.html</code> file in the root of the project.
+            </li>
+            <li class="fragment">You can split it out later if it gets too big.</li>
+          </ul>
+        </section>
+
+        <section>
+
+        <h2>meet-meteor-templates.html</h2>
+<pre><code class="html">&lt;head&gt;
+  <title>meteor-templates</title>
+&lt;/head&gt;
+
+&lt;body&gt;
+  {{> hello}}
+&lt;/body&gt;
+
+<template name="hello">
+  <h1>Hello World!</h1>
+  {{greeting}}
+  <input type="button" value="Click" />
+</template>
+</code></pre>
+        </section>
+
+        <section>
+          <h1>Dude where's my DOCTYPE?</h1>
+          <p>This is no ordinary HTML file</p>
+        </section>
+
+        <section>
+          <h2>HTML files are for templates</h2>
+          <p> No html element, no doctype. <br/> You provide head, body and template elements. <br/> Meteor glues them together.</p>
+        </section>        
+
+        <section>
+          <h2>head &amp; body are special</h2>
+          <p>Meteor injects script &amp; css links into <code>head</code></p>
+          <p>The <code>body</code> is really a shell for sub templates</p>
+        </section>
+
+        <section>
+          <h1>The <code>template</code>:</h1>
+          <ul>
+            <li>Has a name so we can refer to it elsewhere</li>
+            <li>Uses handlbars syntax; {{ mustaches }} for all the things.</li>
+            <li><code>{{> otherTemplate}}</code> means render <code>otherTemplate</code> here.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Mustaches : { )</h1>
+          <ul>
+            <li><code>{{> otherTemplate}}</code> means render <code>otherTemplate</code> here.</li>
+            <li><code>{{ myVariable }}</code> gets replaced with the value of <code>myVariable</code> from the <i>Template instance</i>
+            <li><code>{{#if isOk}}</code> you can do conditionals <code>{{/if}}</code></li>
+            <li><code>{{#each getAll}}</code> and loops <code>{{/each}}</code></li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Template instances</h1>
+          <p>The JS object that represents the rendered template and it's data</p>
+          <p>A place to put helper functions &amp; handle events.</p>
+          <pre><code>
+ Template.myTemplate.getAll = function () {
+   return Things.find()
+ }
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>Let's Hack!</h1>
+        </section>        
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
