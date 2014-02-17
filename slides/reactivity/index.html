@@ -140,7 +140,7 @@ li {
         </section>
 
         <section>
-          <h1>The <code>template</code>:</h1>
+          <h1>The <code>template</code> element:</h1>
           <ul>
             <li>Has a name so we can refer to it elsewhere</li>
             <li>Uses handlbars syntax; {{ mustaches }} for all the things.</li>
@@ -151,7 +151,6 @@ li {
         <section>
           <h1>Mustaches : { )</h1>
           <ul>
-            <li><code>{{> otherTemplate}}</code> means render <code>otherTemplate</code> here.</li>
             <li><code>{{ myVariable }}</code> gets replaced with the value of <code>myVariable</code> from the <i>Template instance</i>
             <li><code>{{#if isOk}}</code> you can do conditionals <code>{{/if}}</code></li>
             <li><code>{{#each getAll}}</code> and loops <code>{{/each}}</code></li>
@@ -159,8 +158,8 @@ li {
         </section>
 
         <section>
-          <h1>Template instances</h1>
-          <p>The JS object that represents the rendered template and it's data</p>
+          <h1>Template functions</h1>
+          <p>The JS object that represents the compiled template</p>
           <p>A place to put helper functions &amp; handle events.</p>
           <pre><code>
  Template.myTemplate.getAll = function () {
@@ -168,6 +167,48 @@ li {
  }
           </code></pre>
         </section>
+
+        <section>
+          <h1>Live HTML</h1>
+          <p>Meteor tracks the data your templates use</p>
+          <p>Template functions are re-run as that data changes</p>
+          <p>Rendered HTML stays in sync with the database</p>
+        </section>
+
+        <section>
+          <pre><code data-language="html">  &lt;template name="theThings"&gt;
+    &lt;ul&gt;
+      {&#123;#each all&#125;}&lt;li&gt;{&#123;name&#125;}&lt;/li&gt;{&#123;/each&#125;}
+    &lt;/ul&gt;
+  &lt;/template&gt;</code></pre>
+
+          <pre><code data-language="js">
+  Template.theThings.all = function () {
+    return Things.find()
+  }
+          </code></pre>
+
+        <p>List of things re-renders when the collection changes</p>
+        </section>
+
+        <section>
+          <h1>Reactivity</h1>
+          <p>Templates helpers are "reactive computations"</p>
+          <p>Collections are are a "reactive data source"</p>
+          <p>Reactive computations re-run as their reactive data sources change</p>
+        </section>
+
+        <section>
+          <h1>Be more reactive</h1>
+          <p>Deps.autorun() will make any function reactive</p>
+          <pre><code data-language="js">
+Deps.autorun(function () {
+  drawWebGLCounter(Things.find().count())
+});
+          </code></pre>
+          <p><code>drawWebGLCounter</code> be run whenever the count changes</p>
+        </section>
+        
 
         <section>
           <h1>Let's Hack!</h1>
