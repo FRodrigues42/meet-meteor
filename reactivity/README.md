@@ -10,11 +10,11 @@
 Reactivity! - Coping with change.
 =================================
 
-This is a common chant oftern heard yelled by web developer outside the offices of the United Inetrnets:
+This is a common chant oftern heard yelled by web developers outside the offices of the United Inetrnets:
 
 	What do we want? **DATA DRIVEN HTML!**
-
-  How are we going to achieve it? **TEMPLATES!**
+	
+	How are we going to achieve it? **TEMPLATES!**
 
 	When do we want it? **NOW!**
 
@@ -27,7 +27,7 @@ Templates
 
 A large chunk of web development is the in the gluing together chunks of HTML and inserting data between angle brackets via templates
 
-Meteor uses Handlebars syntax {{myVariable}} {{>otherTemplate}} {{#if isTrue}} {{/if}} {{#each arrayOfThings}} {{/each}}
+Meteor uses Handlebars syntax `{{myVariable}}` `{{>otherTemplate}}` `{{#if isTrue}} foo {{/if}}` `{{#each arrayOfThings}} <li>{{name}}</li> {{/each}}`
 
 You build up some html, calling helper functions and properties to make it dynamic.
 
