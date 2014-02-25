@@ -15,13 +15,12 @@ Stage 1
 
 In your terminal, run `meteor` in the `stage-1` directory:
 
-```sh
-meteor
-```
+	meteor
+	open http://localhost:3000
 
 Now you've got a simple Meteor app running. If you can see:
 
-	=> Meteor server running on: http://localhost:3000/
+	=> App running at: http://localhost:3000/
 
 ...then all is well.
 

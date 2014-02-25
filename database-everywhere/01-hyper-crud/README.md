@@ -14,13 +14,13 @@ Stage 1
 ---
 
 In your terminal, run `meteor` in this directory:
-	
+
 	meteor
 	open http://localhost:3000
 
 Now you've got a simple Meteor app running. If you can see:
 
-	=> Meteor server running on: http://localhost:3000/
+	=> App running at: http://localhost:3000/
 
 ...then all is well.
 
@@ -40,15 +40,10 @@ As you insert objects to the collection, you should see them appear on the page.
 Stage 3
 ---
 
-Now, using the [meteor collection docs](http://docs.meteor.com/#collections) as a helping hand, try some queries in your browser console to retrieve them:
+Now, using the [meteor collection docs](http://docs.meteor.com/#find) as a helping hand, try some queries in your browser console to CRUD them:
 
 * Fetch (pun intended) all dogs from the database
-* Fetch all dogs sorted by name
-* Fetch all dogs whose names begin "po"
 * Fetch a single dog by name
-
-Delete all dogs whose name is "rover".
-
-Insert some new dogs with profile pictures into the database by adding a field `url` to the object you insert.
-
-Add a profile picture to an existing dog.
+* Delete all dogs whose name is "rover"
+* Insert some new dogs with profile pictures into the database by adding a field `url` to the object you insert
+* Add a profile picture to an existing dog
