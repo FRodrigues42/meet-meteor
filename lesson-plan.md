@@ -1,6 +1,8 @@
 Lesson plan
 ===
 
+Get to grips with Meteor by building demos and apps. This course is a hands on, learn through doing roller coaster ride of Meteor awesome. Follow along with the tutor as they live code the initial stages of each example application. Then you take over and finish each app, with points for completing bonus tasks.
+
 1. Database everywhere
 ---
 In "database everywhere" we explore how developers can interact with data sets on both the server _and_ the client. You'll learn about the methods Meteor uses to transfer data, how to use the Meteor database API and how to manage what data is sync'd between client and server.
